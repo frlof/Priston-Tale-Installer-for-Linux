@@ -1,5 +1,4 @@
 Arch: win64
-Creation_Date: '2022-11-23 17:17:50.062465'
 Custom_Path: false
 DLL_Overrides: {}
 DXVK: dxvk-2.0
@@ -18,7 +17,6 @@ Installed_Dependencies:
 Language: sys
 LatencyFleX: latencyflex-v0.1.1
 NVAPI: dxvk-nvapi-v0.5.4
-Name: PristonTale
 Parameters:
     custom_dpi: 96
     discrete_gpu: true
@@ -29,7 +27,7 @@ Parameters:
     fsr_level: 5
     fullscreen_capture: false
     gamemode: false
-    gamescope: true
+    gamescope: false
     gamescope_borderless: false
     gamescope_fps: 0
     gamescope_fps_no_focus: 0
@@ -61,14 +59,12 @@ Parameters:
     vkd3d: false
     vmtouch: false
     vmtouch_cache_cwd: false
-Path: PristonTale
 Runner: soda-7.0-7
 Sandbox:
     share_net: true
     share_sound: true
 State: 0
 Uninstallers: {}
-Update_Date: '2022-12-08 01:22:55.476178'
 VKD3D: vkd3d-proton-2.7
 Versioning: false
 Versioning_Exclusion_Patterns: []
