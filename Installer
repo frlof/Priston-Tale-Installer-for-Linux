@@ -7,7 +7,7 @@ IMPORTANT=$'\033[0;31m'
 MESSAGE=$'\033[0;33m' 
 VERBOSE=$'\033[0;94m'
 INSTRUCTIONS=$'\033[0;97m'
-DIR=~/Downloads/PristonTaleEUInstaller
+DIR=./InstallerFiles
 
 echo "
 #!/bin/bash
@@ -17,11 +17,24 @@ echo \"${NAME}
 |M|a|d|e| |b|y| |E|l|v|i|r|a| |L|o|f|
 +-+-+-+-+ +-+-+ +-+-+-+-+-+-+ +-+-+-+${VERBOSE}\"
 
+rm ./scriptContainerForPristonTaleInstallerScript
+
+if [ -d \"$DIR\" ];
+then
+    echo \"${MESSAGE}Cleaning old files from previous install attempt...${VERBOSE}\"
+fi
+
+
 read -p \"Continue installer?[y/n]\" choice
 case \"\$choice\" in 
   y|Y ) ;;
   * ) exit;;
 esac
+
+if [ -d \"$DIR\" ];
+then
+    rm -r -f ./InstallerFiles
+fi
 
 mkdir -p ./InstallerFiles
 
@@ -56,9 +69,9 @@ echo \"${VERBOSE}\"
 echo \"${MESSAGE}Press Enter continue...${VERBOSE}\"
 
 read
-" > ~/Downloads/scriptContainerForPristonTaleInstallerScript
+" > ./scriptContainerForPristonTaleInstallerScript
 
 wait
 
 "$@"
-exec "$SHELL" ~/Downloads/scriptContainerForPristonTaleInstallerScript
+exec "$SHELL" ./scriptContainerForPristonTaleInstallerScript
