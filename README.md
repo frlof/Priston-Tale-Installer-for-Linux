@@ -35,4 +35,4 @@ This software needs to be installed on the system.
        - *Target*:         `"/usr/bin/flatpak-spawn"`
        - *Start in*:       `"/usr/bin/"`
        - *Launch options*: `--host flatpak run --command=bottles-cli com.usebottles.bottles run -b "PTCustomEnv" -p "Launcher"`
-8.  You are done!" > ~/Downloads/PristonTaleEUInstaller/README
+8.  Congratulations you have installed PristonTale Eu!
