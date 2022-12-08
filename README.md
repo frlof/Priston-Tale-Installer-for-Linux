@@ -10,11 +10,12 @@ This software needs to be installed on the system.
 ## Installation
 
 1. Download latest release [here](https://temp.com).
-2. Run Installer and follow instructions.
+2. Place downloaded folder in `~/Downloads`
+3. Run `Installer` and follow instructions shown in the terminal
 
 **Optional**
 
-3. Add game to steam guide is found [here](#add-game-to-steam).
+4. Add game to steam guide is found [here](#add-game-to-steam).
 
 ## Add game to Steam
 
