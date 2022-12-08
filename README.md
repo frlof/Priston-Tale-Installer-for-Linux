@@ -1,4 +1,4 @@
-# Priston-Tale-Installer-for-Linux (Work in progress)
+# Priston-Tale-Installer-for-Linux
 This is a script to install `Priston Tale Eu` in Linux. `Steam Deck` is also supported.
 
 ## Prerequisits
