@@ -12,21 +12,10 @@ DIR=~/Downloads/PristonTaleEUInstaller
 echo "
 #!/bin/bash
 
-rm ~/Downloads/scriptContainerForPristonTaleInstallerScript
-
-if [ -d \"$DIR\" ];
-then
-    echo \"${IMPORTANT}Installation directory $DIR already exists. Please remove it and rerun the installer.
-Press Enter to continue...${VERBOSE}\"
-    read
-    exit
-fi
-
 echo \"${NAME}
 +-+-+-+-+ +-+-+ +-+-+-+-+-+-+ +-+-+-+
 |M|a|d|e| |b|y| |E|l|v|i|r|a| |L|o|f|
 +-+-+-+-+ +-+-+ +-+-+-+-+-+-+ +-+-+-+${VERBOSE}\"
-
 
 read -p \"Continue installer?[y/n]\" choice
 case \"\$choice\" in 
@@ -34,132 +23,34 @@ case \"\$choice\" in
   * ) exit;;
 esac
 
-mkdir -p ~/Downloads/PristonTaleEUInstaller
+mkdir -p ./InstallerFiles
 
 echo \"${MESSAGE}Installing dependencies, please wait${VERBOSE}\"
 flatpak install --noninteractive com.usebottles.bottles
 
-echo \"${MESSAGE}Creating environment config...${VERBOSE}\"
-echo \"Arch: win64
-Creation_Date: '2022-11-23 17:17:50.062465'
-Custom_Path: false
-DLL_Overrides: {}
-DXVK: dxvk-2.0
-Environment: Gaming
-Environment_Variables: {}
-External_Programs: {}
-Installed_Dependencies:
-- d3dx9
-- msls31
-- arial32
-- times32
-- courie32
-- d3dcompiler_43
-- d3dcompiler_47
-- mono
-Language: sys
-LatencyFleX: latencyflex-v0.1.1
-NVAPI: dxvk-nvapi-v0.5.4
-Name: PristonTale
-Parameters:
-    custom_dpi: 96
-    discrete_gpu: true
-    dxvk: true
-    dxvk_nvapi: false
-    fixme_logs: false
-    fsr: false
-    fsr_level: 5
-    fullscreen_capture: false
-    gamemode: false
-    gamescope: true
-    gamescope_borderless: false
-    gamescope_fps: 0
-    gamescope_fps_no_focus: 0
-    gamescope_fullscreen: true
-    gamescope_game_height: 0
-    gamescope_game_width: 0
-    gamescope_scaling: false
-    gamescope_window_height: 0
-    gamescope_window_width: 0
-    latencyflex: false
-    mangohud: false
-    mouse_warp: true
-    obsvkc: false
-    pulseaudio_latency: false
-    renderer: gl
-    sandbox: false
-    sync: esync
-    take_focus: false
-    use_be_runtime: true
-    use_eac_runtime: true
-    use_runtime: false
-    use_steam_runtime: false
-    versioning_automatic: false
-    versioning_compression: false
-    versioning_exclusion_patterns: false
-    virtual_desktop: false
-    virtual_desktop_res: 1280x720
-    vkbasalt: false
-    vkd3d: false
-    vmtouch: false
-    vmtouch_cache_cwd: false
-Path: PristonTale
-Runner: soda-7.0-7
-Sandbox:
-    share_net: true
-    share_sound: true
-State: 0
-Uninstallers: {}
-Update_Date: '2022-12-08 01:22:55.476178'
-VKD3D: vkd3d-proton-2.7
-Versioning: false
-Versioning_Exclusion_Patterns: []
-Windows: win10
-WorkingDir: ''
-run_in_terminal: false
-session_arguments: ''\" > ~/Downloads/PristonTaleEUInstaller/PristontaleEUEnvironment.yml
-
 wait
 echo \"${MESSAGE}Creating environment, please wait${VERBOSE}\"
-flatpak run --command=bottles-cli com.usebottles.bottles new --bottle-name PTCustomEnv --environment custom --custom-environment ~/Downloads/PristonTaleEUInstaller/PristontaleEUEnvironment.yml &> ~/Downloads/PristonTaleEUInstaller/BottleImportLogs.txt
+flatpak run --command=bottles-cli com.usebottles.bottles new --bottle-name PTCustomEnv --environment custom --custom-environment ./PristontaleEUEnvironment.yml &> ./BottleImportLogs.txt
 
 echo -e \"${MESSAGE}Downloading PristontaleEU, please wait${VERBOSE}\"
-wget -q --show-progress -P ~/Downloads/PristonTaleEUInstaller https://www.dropbox.com/s/wonf8ocvd0cvisd/PristontaleEU-Setup.exe?dl=1
+wget -q --show-progress -P . https://www.dropbox.com/s/wonf8ocvd0cvisd/PristontaleEU-Setup.exe?dl=1
 wait
-mv ~/Downloads/PristonTaleEUInstaller/PristontaleEU-Setup.exe\?dl\=1 ~/Downloads/PristonTaleEUInstaller/PristontaleEU-Setup.exe
+mv ./PristontaleEU-Setup.exe\?dl\=1 ./PristontaleEU-Setup.exe
 
 wait
 echo \"${MESSAGE}Starting Pristontale installer...${VERBOSE}\"
 echo \"${IMPORTANT}UNCHECK \\\"Launch Pristontale EU\\\" before pressing \\\"Finish\\\" WHEN INSTALLER IS COMPLETE ${VERBOSE}\"
 echo \"${MESSAGE}If a popup is shown \\\"There is not Windows program configured to open this type of file.\\\" just press \\\"OK\\\". This is okay.${VERBOSE}\"
-flatpak run --command=bottles-cli com.usebottles.bottles run -b PTCustomEnv -e ~/Downloads/PristonTaleEUInstaller/PristontaleEU-Setup.exe &> ~/Downloads/PristonTaleEUInstaller/PristonTaleInstallationLogs.txt
-
-echo \"Adding PristonTale to Steam
-1.  Open Steam in desktop mode
-2.  Left click \\\"ADD A GAME\\\" in the bottom left corner
-3.  Left click \\\"Add a Non-Steam Game...\\\"
-4.  Choose any program from the list and left click \"ADD SELECTED PROGRAMS\" (We will reprogram the entry, that is why we can choose ANY program from the list)
-5.  Right click on the created entry and click \\\"Properties...\\\"
-6.  Fill the following (without the brackets)
-        Steam Deck:
-            NAME:           [Priston Tale EU]
-            TARGET:         [flatpak]
-            LAUNCH OPTIONS: [run --command=bottles-cli com.usebottles.bottles run -b \\\"PTCustomEnv\\\" -p \\\"Launcher\\\"]
-        Other:
-            NAME:           [Priston Tale EU]
-            TARGET:         [\\\"/usr/bin/flatpak-spawn\\\"]
-            START IN:       [\\\"/usr/bin/\\\"]
-            LAUNCH OPTIONS: [--host flatpak run --command=bottles-cli com.usebottles.bottles run -b \\\"PTCustomEnv\\\" -p \\\"Launcher\\\"]
-8.  You are done!\" > ~/Downloads/PristonTaleEUInstaller/README
+flatpak run --command=bottles-cli com.usebottles.bottles run -b PTCustomEnv -e ./PristontaleEU-Setup.exe &> ./PristonTaleInstallationLogs.txt
 
 echo \"${MESSAGE}Installer complete!${VERBOSE}\"
 
 echo \"${IMPORTANT}PRISTONTALE IS NOT YET ADDED TO STEAM
-Instructions below are also found in README file in ~/Downloads/PristonTaleEUInstaller/${VERBOSE}\"
+Instructions below are also found in the README file./${VERBOSE}\"
 
 wait
 echo \"${INSTRUCTIONS}\"
-cat ~/Downloads/PristonTaleEUInstaller/README
+cat ./README.md
 echo \"${VERBOSE}\"
 
 echo \"${MESSAGE}Press Enter continue...${VERBOSE}\"
