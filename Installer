@@ -9,6 +9,8 @@ VERBOSE=$'\033[0;94m'
 INSTRUCTIONS=$'\033[0;97m'
 DIR=./InstallerFiles
 
+ABSOLUTEPATH=$(pwd)
+
 echo "
 #!/bin/bash
 
@@ -54,7 +56,7 @@ wait
 echo \"${MESSAGE}Starting Pristontale installer...${VERBOSE}\"
 echo \"${IMPORTANT}UNCHECK \\\"Launch Pristontale EU\\\" before pressing \\\"Finish\\\" WHEN INSTALLER IS COMPLETE ${VERBOSE}\"
 echo \"${MESSAGE}If a popup is shown \\\"There is not Windows program configured to open this type of file.\\\" just press \\\"OK\\\". This is okay.${VERBOSE}\"
-flatpak run --command=bottles-cli com.usebottles.bottles run -b PTCustomEnv -e ./InstallerFiles/PristontaleEU-Setup.exe &> ./InstallerFiles/PristonTaleInstallationLogs.txt
+flatpak run --command=bottles-cli com.usebottles.bottles run -b PTCustomEnv -e ${ABSOLUTEPATH}/InstallerFiles/PristontaleEU-Setup.exe &> ./InstallerFiles/PristonTaleInstallationLogs.txt
 
 echo \"${MESSAGE}Installer complete!${VERBOSE}\"
 
