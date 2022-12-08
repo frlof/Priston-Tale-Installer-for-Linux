@@ -45,7 +45,7 @@ flatpak install --noninteractive com.usebottles.bottles
 
 wait
 echo \"${MESSAGE}Creating environment, please wait${VERBOSE}\"
-flatpak run --command=bottles-cli com.usebottles.bottles new --bottle-name PTCustomEnv --environment custom --custom-environment ./PristontaleEUEnvironment.yml &> ./InstallerFiles/BottleImportLogs.txt
+flatpak run --command=bottles-cli com.usebottles.bottles new --bottle-name PTCustomEnv --environment custom --custom-environment ${ABSOLUTEPATH}/PristontaleEUEnvironment.yml &> ./InstallerFiles/BottleImportLogs.txt
 
 echo -e \"${MESSAGE}Downloading PristontaleEU, please wait${VERBOSE}\"
 wget -q --show-progress -P ./InstallerFiles https://www.dropbox.com/s/wonf8ocvd0cvisd/PristontaleEU-Setup.exe?dl=1
