@@ -30,18 +30,18 @@ flatpak install --noninteractive com.usebottles.bottles
 
 wait
 echo \"${MESSAGE}Creating environment, please wait${VERBOSE}\"
-flatpak run --command=bottles-cli com.usebottles.bottles new --bottle-name PTCustomEnv --environment custom --custom-environment ./PristontaleEUEnvironment.yml &> ./BottleImportLogs.txt
+flatpak run --command=bottles-cli com.usebottles.bottles new --bottle-name PTCustomEnv --environment custom --custom-environment ./PristontaleEUEnvironment.yml &> ./InstallerFiles/BottleImportLogs.txt
 
 echo -e \"${MESSAGE}Downloading PristontaleEU, please wait${VERBOSE}\"
-wget -q --show-progress -P . https://www.dropbox.com/s/wonf8ocvd0cvisd/PristontaleEU-Setup.exe?dl=1
+wget -q --show-progress -P ./InstallerFiles https://www.dropbox.com/s/wonf8ocvd0cvisd/PristontaleEU-Setup.exe?dl=1
 wait
-mv ./PristontaleEU-Setup.exe\?dl\=1 ./PristontaleEU-Setup.exe
+mv ./InstallerFiles/PristontaleEU-Setup.exe\?dl\=1 ./InstallerFiles/PristontaleEU-Setup.exe
 
 wait
 echo \"${MESSAGE}Starting Pristontale installer...${VERBOSE}\"
 echo \"${IMPORTANT}UNCHECK \\\"Launch Pristontale EU\\\" before pressing \\\"Finish\\\" WHEN INSTALLER IS COMPLETE ${VERBOSE}\"
 echo \"${MESSAGE}If a popup is shown \\\"There is not Windows program configured to open this type of file.\\\" just press \\\"OK\\\". This is okay.${VERBOSE}\"
-flatpak run --command=bottles-cli com.usebottles.bottles run -b PTCustomEnv -e ./PristontaleEU-Setup.exe &> ./PristonTaleInstallationLogs.txt
+flatpak run --command=bottles-cli com.usebottles.bottles run -b PTCustomEnv -e ./InstallerFiles/PristontaleEU-Setup.exe &> ./InstallerFiles/PristonTaleInstallationLogs.txt
 
 echo \"${MESSAGE}Installer complete!${VERBOSE}\"
 
