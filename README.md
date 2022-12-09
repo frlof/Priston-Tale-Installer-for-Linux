@@ -4,8 +4,14 @@ This is a script to install `Priston Tale Eu` in Linux. `Steam Deck` is also sup
 ## Prerequisits
 ***!!STEAM DECK USERS CAN SKIP THIS STEP!!***
 
+
 This software needs to be installed on the system.
 * `Flatpak`
+
+*If `Steam` installed with `Flatpak`*
+
+* Add permissions for `Steam` to access `org.freedesktop.Flatpak` `Session bus`. This can be done easily with `Flatseal`. *Note: This removes the sandbox `Steam` runs in*
+
 
 ## Installation
 
@@ -25,14 +31,15 @@ This software needs to be installed on the system.
 4. Choose any program from the list and left click `ADD SELECTED PROGRAMS` (We will reprogram the entry, that is why we can choose ANY program from the list)
 5. Right click on the created entry and click `Properties...`
 6. Fill the following
-    - `Steam Deck`:
-      - *Name*: `Priston Tale EU`
-      - *Target*:         `flatpak`
-      - *Start in*:       Leave empty
-      - *Launch options*: `run --command=bottles-cli com.usebottles.bottles run -b "PTCustomEnv" -p "Priston Tale"`
-     - Other:
+    - `Steam` installed with `Flatpak`:
        - *Name*:           `Priston Tale EU`
        - *Target*:         `"/usr/bin/flatpak-spawn"`
        - *Start in*:       `"/usr/bin/"`
        - *Launch options*: `--host flatpak run --command=bottles-cli com.usebottles.bottles run -b "PTCustomEnv" -p "Priston Tale"`
+    - `Steam Deck` / Other:
+      - *Name*: `Priston Tale EU`
+      - *Target*:         `flatpak`
+      - *Start in*:       Leave empty
+      - *Launch options*: `run --command=bottles-cli com.usebottles.bottles run -b "PTCustomEnv" -p "Priston Tale"`
+     
 8.  Play the game!
