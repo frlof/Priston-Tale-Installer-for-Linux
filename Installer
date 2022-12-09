@@ -62,7 +62,7 @@ flatpak run --command=bottles-cli com.usebottles.bottles run -b PTCustomEnv -e $
 wait
 echo \"${MESSAGE}Adding game entry${VERBOSE}\"
 GAMEPATH=\$(flatpak run --command=bottles-cli com.usebottles.bottles --json programs -b PTCustomEnv | tail -c +2 | head -c -1 | jq -r '.path')
-flatpak run --command=bottles-cli com.usebottles.bottles add -b PTCustomEnv -n \"Priston Tale\" -p \"\$GAMEPATH\"
+flatpak run --command=bottles-cli com.usebottles.bottles add -b PTCustomEnv -n \"Priston Tale\" -p \"\$GAMEPATH\" &> ./InstallerFiles/AddingGameEntryLogs.txt
 
 echo \"${MESSAGE}Installer complete!${VERBOSE}\"
 
