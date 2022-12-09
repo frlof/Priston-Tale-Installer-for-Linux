@@ -1,0 +1,74 @@
+#!/bin/sh
+#Author Elvira Lof
+#Created 2022-12-08
+
+NAME=$'\033[0;35m' 
+IMPORTANT=$'\033[0;31m' 
+MESSAGE=$'\033[0;33m' 
+VERBOSE=$'\033[0;94m'
+INSTRUCTIONS=$'\033[0;97m'
+DIR=./InstallerFiles
+
+ABSOLUTEPATH=$(pwd)
+
+echo "
+#!/bin/bash
+
+echo \"${NAME}
++-+-+-+-+ +-+-+ +-+-+-+-+-+-+ +-+-+-+
+|M|a|d|e| |b|y| |E|l|v|i|r|a| |L|o|f|
++-+-+-+-+ +-+-+ +-+-+-+-+-+-+ +-+-+-+${VERBOSE}\"
+
+rm ./scriptContainerForPristonTaleInstallerScript
+
+if [ -d \"$DIR\" ];
+then
+    echo \"${MESSAGE}Cleaning old files from previous install attempt...${VERBOSE}\"
+fi
+
+
+read -p \"Continue installer?[y/n]\" choice
+case \"\$choice\" in 
+  y|Y ) ;;
+  * ) exit;;
+esac
+
+if [ -d \"$DIR\" ];
+then
+    rm -r -f ./InstallerFiles
+fi
+
+mkdir -p ./InstallerFiles
+
+echo \"${MESSAGE}Installing dependencies, please wait${VERBOSE}\"
+flatpak install --noninteractive com.usebottles.bottles
+
+wait
+echo \"${MESSAGE}Creating environment, please wait${VERBOSE}\"
+flatpak run --command=bottles-cli com.usebottles.bottles new --bottle-name PTCustomEnv --environment custom --custom-environment ${ABSOLUTEPATH}/PristontaleEUEnvironment.yml &> ./InstallerFiles/BottleImportLogs.txt
+
+echo -e \"${MESSAGE}Downloading PristontaleEU, please wait${VERBOSE}\"
+wget -q --show-progress -P ./InstallerFiles https://www.dropbox.com/s/wonf8ocvd0cvisd/PristontaleEU-Setup.exe?dl=1
+wait
+mv ./InstallerFiles/PristontaleEU-Setup.exe\?dl\=1 ./InstallerFiles/PristontaleEU-Setup.exe
+
+wait
+echo \"${MESSAGE}Starting Pristontale installer...${VERBOSE}\"
+echo \"${IMPORTANT}UNCHECK \\\"Launch Pristontale EU\\\" before pressing \\\"Finish\\\" WHEN INSTALLER IS COMPLETE ${VERBOSE}\"
+echo \"${MESSAGE}If a popup is shown \\\"There is not Windows program configured to open this type of file.\\\" just press \\\"OK\\\". This is okay.${VERBOSE}\"
+flatpak run --command=bottles-cli com.usebottles.bottles run -b PTCustomEnv -e ${ABSOLUTEPATH}/InstallerFiles/PristontaleEU-Setup.exe &> ./InstallerFiles/PristonTaleInstallationLogs.txt
+
+echo \"${MESSAGE}Installer complete!${VERBOSE}\"
+
+echo \"${IMPORTANT}PRISTONTALE IS NOT YET ADDED TO STEAM
+Instructions are found in README file./${VERBOSE}\"
+
+echo \"${MESSAGE}Press Enter continue...${VERBOSE}\"
+
+read
+" > ./scriptContainerForPristonTaleInstallerScript
+
+wait
+
+"$@"
+exec "$SHELL" ./scriptContainerForPristonTaleInstallerScript
