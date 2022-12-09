@@ -29,12 +29,12 @@ This software needs to be installed on the system.
 5. Right click on the created entry and click `Properties...`
 6. Fill the following
     - `Steam` installed with `Flatpak`:
-       - *Name*:           `Priston Tale EU`
+       - *Name*:           `PristonTale EU`
        - *Target*:         `"/usr/bin/flatpak-spawn"`
        - *Start in*:       `"/usr/bin/"`
        - *Launch options*: `--host flatpak run --command=bottles-cli com.usebottles.bottles run -b "PTCustomEnv" -p "Priston Tale"`
     - `Steam Deck` / Other:
-      - *Name*: `Priston Tale EU`
+      - *Name*: `PristonTale EU`
       - *Target*:         `flatpak`
       - *Start in*:       Leave empty
       - *Launch options*: `run --command=bottles-cli com.usebottles.bottles run -b "PTCustomEnv" -p "Priston Tale"`
