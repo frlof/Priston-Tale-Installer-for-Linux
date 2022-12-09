@@ -58,10 +58,16 @@ echo \"${IMPORTANT}UNCHECK \\\"Launch Pristontale EU\\\" before pressing \\\"Fin
 echo \"${MESSAGE}If a popup is shown \\\"There is not Windows program configured to open this type of file.\\\" just press \\\"OK\\\". This is okay.${VERBOSE}\"
 flatpak run --command=bottles-cli com.usebottles.bottles run -b PTCustomEnv -e ${ABSOLUTEPATH}/InstallerFiles/PristontaleEU-Setup.exe &> ./InstallerFiles/PristonTaleInstallationLogs.txt
 
+
+wait
+echo \"${MESSAGE}Adding game entry${VERBOSE}\"
+GAMEPATH=\$(flatpak run --command=bottles-cli com.usebottles.bottles --json programs -b PTCustomEnv | tail -c +2 | head -c -1 | jq -r '.path')
+flatpak run --command=bottles-cli com.usebottles.bottles add -b PTCustomEnv -n \"Priston Tale\" -p \"\$GAMEPATH\"
+
 echo \"${MESSAGE}Installer complete!${VERBOSE}\"
 
 echo \"${IMPORTANT}PRISTONTALE IS NOT YET ADDED TO STEAM
-Instructions are found in README file./${VERBOSE}\"
+Instructions are found in README file${VERBOSE}\"
 
 echo \"${MESSAGE}Press Enter continue...${VERBOSE}\"
 
