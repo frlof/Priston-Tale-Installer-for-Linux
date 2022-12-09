@@ -67,7 +67,7 @@ flatpak run --command=bottles-cli com.usebottles.bottles add -b PTCustomEnv -n \
 echo \"${MESSAGE}Installer complete!${VERBOSE}\"
 
 echo \"${IMPORTANT}PRISTONTALE IS NOT YET ADDED TO STEAM
-Instructions are found in README file under [## Add game to Steam]${VERBOSE}\"
+Instructions are found in README file in section [## Add game to Steam]${VERBOSE}\"
 
 echo \"${MESSAGE}Press Enter continue...${VERBOSE}\"
 
