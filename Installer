@@ -26,7 +26,7 @@ then
     echo \"${MESSAGE}Cleaning old files from previous install attempt...${VERBOSE}\"
 fi
 
-
+echo \"${IMPORTANT}It is important to read the RED instructions during the installation process${VERBOSE}\"
 read -p \"Continue installer?[y/n]\" choice
 case \"\$choice\" in 
   y|Y ) ;;
@@ -54,8 +54,8 @@ mv ./InstallerFiles/PristontaleEU-Setup.exe\?dl\=1 ./InstallerFiles/PristontaleE
 
 wait
 echo \"${MESSAGE}Starting Pristontale installer...${VERBOSE}\"
-echo \"${IMPORTANT}UNCHECK \\\"Launch Pristontale EU\\\" before pressing \\\"Finish\\\" WHEN INSTALLER IS COMPLETE ${VERBOSE}\"
-echo \"${MESSAGE}If a popup is shown \\\"There is not Windows program configured to open this type of file.\\\" just press \\\"OK\\\". This is okay.${VERBOSE}\"
+echo \"${IMPORTANT}Uncheck \\\"Launch Pristontale EU\\\" before pressing \\\"Finish\\\" when installer is complete${VERBOSE}\"
+echo \"${IMPORTANT}If an error popup is shown \\\"There is not Windows program configured to open this type of file.\\\" just press \\\"OK\\\". This is okay.${VERBOSE}\"
 flatpak run --command=bottles-cli com.usebottles.bottles run -b PTCustomEnv -e ${ABSOLUTEPATH}/InstallerFiles/PristontaleEU-Setup.exe &> ./InstallerFiles/PristonTaleInstallationLogs.txt
 
 
@@ -67,7 +67,7 @@ flatpak run --command=bottles-cli com.usebottles.bottles add -b PTCustomEnv -n \
 echo \"${MESSAGE}Installer complete!${VERBOSE}\"
 
 echo \"${IMPORTANT}PRISTONTALE IS NOT YET ADDED TO STEAM
-Instructions are found in README file${VERBOSE}\"
+Instructions are found in README file under [## Add game to Steam]${VERBOSE}\"
 
 echo \"${MESSAGE}Press Enter continue...${VERBOSE}\"
 
