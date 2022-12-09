@@ -15,9 +15,9 @@ This software needs to be installed on the system.
 
 ## Installation
 
-1. Download latest release [here](https://temp.com).
+1. Download latest release [here](https://github.com/frlof/Priston-Tale-Installer-for-Linux/releases/download/latest/PristonTaleInstaller.zip).
 2. Place downloaded folder in `~/Downloads`
-3. Run `Installer` and follow instructions shown in the terminal
+3. Run `Installer` and follow instructions shown in the terminal carefully throughout the install.
 
 **Optional**
 
@@ -40,6 +40,5 @@ This software needs to be installed on the system.
       - *Name*: `Priston Tale EU`
       - *Target*:         `flatpak`
       - *Start in*:       Leave empty
-      - *Launch options*: `run --command=bottles-cli com.usebottles.bottles run -b "PTCustomEnv" -p "Priston Tale"`
-     
-8.  Play the game!
+      - *Launch options*: `run --command=bottles-cli com.usebottles.bottles run -b "PTCustomEnv" -p "Priston Tale"
+7.  Play the game!
