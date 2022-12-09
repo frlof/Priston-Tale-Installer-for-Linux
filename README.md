@@ -35,11 +35,11 @@ This software needs to be installed on the system.
        - *Name*:           `Priston Tale EU`
        - *Target*:         `"/usr/bin/flatpak-spawn"`
        - *Start in*:       `"/usr/bin/"`
-       - *Launch options*: `--host flatpak run --command=bottles-cli com.usebottles.bottles run -b "PTCustomEnv" -p "Launcher"`
+       - *Launch options*: `--host flatpak run --command=bottles-cli com.usebottles.bottles run -b "PTCustomEnv" -p "Priston Tale"`
     - `Steam Deck` / Other:
       - *Name*: `Priston Tale EU`
       - *Target*:         `flatpak`
       - *Start in*:       Leave empty
-      - *Launch options*: `run --command=bottles-cli com.usebottles.bottles run -b "PTCustomEnv" -p "Launcher"`
+      - *Launch options*: `run --command=bottles-cli com.usebottles.bottles run -b "PTCustomEnv" -p "Priston Tale"`
      
 8.  Play the game!
